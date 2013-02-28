@@ -32,8 +32,8 @@ module CapistranoDeploy
 
           desc 'Create tmp directories'
           task :tmp, :roles => :app do
-            run 'mkdir -p tmp/pids'
-            run 'mkdir -p tmp/sockets'
+            run "mkdir -p #{deploy_to}/tmp/pids"
+            run "mkdir -p #{deploy_to}/tmp/sockets"
           end
         end
       end
