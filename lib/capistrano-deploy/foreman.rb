@@ -26,14 +26,13 @@ module CapistranoDeploy
 
           desc 'Upload .env file'
           task :upload_env, :roles => :app, :except => {:no_release => true} do
-            foreman_env_files = fetch(:foreman_env_files, '.env')        
+            foreman_env_files = fetch(:foreman_env_files, '.env')
             files = foreman_env_files.split ','
             env = `cat #{files.join ' '}`
             put env, "#{deploy_to}/.env"
           end
         end
 
-        after 'deploy:update', 'foreman:upload_env'
         after 'deploy:restart', 'foreman:export'
       end
     end
