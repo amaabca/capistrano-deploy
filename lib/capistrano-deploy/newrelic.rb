@@ -18,6 +18,7 @@ module CapistranoDeploy
           end
         end
 
+        after 'unicorn:reexec', 'newrelic:notice_deployment'
       end
     end
   end
