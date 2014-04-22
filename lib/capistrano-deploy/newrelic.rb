@@ -10,7 +10,7 @@ module CapistranoDeploy
 
         namespace :newrelic do
 
-          task :notice_deployment do
+          task :notice_deployment, roles: :notification do
             run "curl -sH '#{new_relic_api_key}'
                 -d 'deployment[app_name]=#{new_relic_app_name}'
                 -d 'deployment[revision]=#{current_revision}'
