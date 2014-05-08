@@ -13,11 +13,11 @@ module CapistranoDeploy
 
           task :notice_deployment, roles: :notification, only: { primary: true } do
             if new_relic_stages.include? current_stage
-            run "curl -sH '#{new_relic_api_key}'
-                -d 'deployment[app_name]=#{new_relic_app_name}'
-                -d 'deployment[revision]=#{current_revision}'
-                -d 'deployment[user]=#{new_relic_user}' #{link}"
-            end
+              run "curl -sH '#{new_relic_api_key}'
+                  -d 'deployment[app_name]=#{new_relic_app_name}'
+                  -d 'deployment[revision]=#{current_revision}'
+                  -d 'deployment[user]=#{new_relic_user}' #{link}"
+              end
           end
         end
 
