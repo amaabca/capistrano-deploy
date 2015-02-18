@@ -32,7 +32,7 @@ describe 'deploy' do
   describe 'deploy' do
     it 'runs update and restart' do
       cli_execute 'deploy'
-      config.should have_executed('deploy:update', 'deploy:restart')
+      config.should have_executed('deploy:update', 'deploy:migrate', 'deploy:restart')
     end
   end
 end
