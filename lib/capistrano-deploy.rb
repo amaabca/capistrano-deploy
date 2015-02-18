@@ -37,6 +37,7 @@ module CapistranoDeploy
         desc 'Run deploy'
         task :default do
           update
+          migrate
           restart
         end
 

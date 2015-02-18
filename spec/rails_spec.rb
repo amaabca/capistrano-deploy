@@ -27,4 +27,16 @@ describe 'rails' do
       config.should have_executed('deploy:update', 'deploy:migrate', 'deploy:restart')
     end
   end
+
+  describe 'deploy:nomigrate' do
+    it 'runs update and restart' do
+      cli_execute 'deploy:nomigrate'
+      config.should have_executed('deploy:update', 'deploy:restart')
+    end
+
+    it 'does not run migrate' do
+      cli_execute 'deploy:nomigrate'
+      config.should_not have_executed('deploy:migrate')
+    end
+  end
 end

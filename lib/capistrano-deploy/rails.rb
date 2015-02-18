@@ -25,6 +25,12 @@ module CapistranoDeploy
             run "cd #{deploy_to} && RAILS_ENV=#{rails_env} #{rake} db:migrate"
           end
 
+          desc 'Deploy without running migrations'
+          task :nomigrate do
+            update
+            restart
+          end
+
           desc 'Run seeds'
           task :seed, :roles => :db, :only => {:primary => true} do
             run "cd #{deploy_to} && RAILS_ENV=#{rails_env} #{rake} db:seed"
